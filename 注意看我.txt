@@ -1,0 +1,3 @@
+这些脚本，都是在centos6.x上测试成功的。
+如果要安装shadowsocks。我个人推荐 先升级python到2.7.x，然后安装supervisor，将shadowsocks利用super作为守护进程启动
+所以先执行python_upgrade_to2.7.sh  再运行 supervisor_install.sh 和shadowsocks_install.sh
