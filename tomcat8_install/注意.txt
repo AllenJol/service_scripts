@@ -1,0 +1,1 @@
+直接执行tomcat8_install.sh 他会调用当前目录的jdk8_install.sh 先安装jdk，并且启动tomcat8
