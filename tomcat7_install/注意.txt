@@ -1,0 +1,4 @@
+我是把两个脚本都放在/usr/local/src下
+直接执行：tomcat7_install.sh  它会调用jdk7_install.sh并执行。最后启动tomcat7
+
+修改tomcat的server.xml配置文件后期根据需求操作
