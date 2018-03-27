@@ -33,3 +33,9 @@
 如果是阿里云服务器，一定要在服务器实例的安全组中打开8443端口，（我脚本中是用的8443，密码是shadowsocks.conf中YB开头的一大串）
 我个人一般都是升级了python，然后安装了supervisor后，在执行这个脚本，将他拥supervisor作为守护进程启动。这样比较稳定
 
+8、tomcat7安装脚本。安装的时候它会调用同目录下的jdk7_install.sh并且安装启动tomcat7
+
+9、写脚本时自动生成脚本头部注释信息。我们在/bin目录下写一个auto：  vim  /bin/auto  && chmod + x /bin/auto 然后写脚本的时候，
+auto test.sh 他会自动生成注释信息
+
+
