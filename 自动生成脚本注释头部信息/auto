@@ -1,0 +1,18 @@
+#!/bin/bash
+
+#判断当文件不存在
+if [ ! "$1" ];then
+  echo 'Please input an argument as the fileName!'
+  exit 1
+fi
+#判断文件已创建，直接用vim打开
+if [ -f "$1" ];then
+  vim "$1"
+  exit 2
+fi
+
+touch "$1"
+echo "#!/bin/bash">>"$1"
+echo "#__Author__:Allen_Jol at `date +%F' '%H:%M:%S`">>"$1"
+echo "#Description:">>"$1"
+vim "$1"
