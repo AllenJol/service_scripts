@@ -13,8 +13,8 @@ function check_root(){
 }
 
 function check_dir(){
-if [ ! -d "/usr/local/java" ];then
-  mkdir -p /usr/local/java
+if [ ! -d "/usr/java" ];then
+  mkdir -p /usr/java
 else
   echo "dir have exsits and locked,please check..."
   exit 1
@@ -37,12 +37,12 @@ function jdk7_down_install(){
     echo "network is error,please check..."
   else
     echo "network is ok,download ${JDK8_VERSION} now.please wait for a moment."
-    cd /usr/local/java 
+    cd /usr/java 
     wget -c ${JDK7_DOWN_URL}
-    tar -zxf ${JDK7_VERSION}.tar.gz -C /usr/local/java && ln -s /usr/local/java/jdk1.7.0_79 /usr/jdk
+    tar -zxf ${JDK7_VERSION}.tar.gz -C /usr/java && ln -s /usr/java/jdk1.7.0_79 /usr/jdk
     #rpm -ivh ${JDK8_VERSION} && ln -s /usr/local/java/${JDK8_VERSION}  /usr/jdk
   fi
-echo 'export JAVA_HOME=/usr/local/java/jdk1.7.0_79' >>/etc/profile
+echo 'export JAVA_HOME=/usr/java/jdk1.7.0_79' >>/etc/profile
 echo 'export PATH=$JAVA_HOME/bin:$PATH' >>/etc/profile
 echo 'export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar' >>/etc/profile
 source /etc/profile
