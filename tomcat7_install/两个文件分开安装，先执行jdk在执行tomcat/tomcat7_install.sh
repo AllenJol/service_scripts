@@ -2,24 +2,13 @@
 #__Author__:Allen_Jol at 2018-03-21 13:52:13
 #Description: tomcat 7 install
 
-. ./jdk7_install.sh
 
-check_root
-check_dir
-check_jdk
-jdk7_down_install
-  
-source /etc/profile
+. /etc/profile
 
 DIR="/usr/local/src"
 TOMCAT7_PATH="/usr/local/tomcat7"
-TOMCAT7_VERSION="apache-tomcat-7.0.73"
+TOMCAT7_VERSION="apache-tomcat-7.0.85"
 TOMCAT7_DOWN_URL="http://ozi3kq0eb.bkt.clouddn.com/${TOMCAT7_VERSION}.tar.gz"
-
-#apache7_version=7.0.73
-#jdk1_7_version=1.7.0_79
-#apache7_url=http://ozi3kq0eb.bkt.clouddn.com/apache-tomcat-$apache7_version.tar.gz
-#jdk1_7_url=http://ozi3kq0eb.bkt.clouddn.com/jdk$jdk1_7_version.tar.gz
 
 function check_dir(){
   if [ -d "${TOMCAT7_PATH}" ];then
