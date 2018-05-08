@@ -6,7 +6,7 @@ JDK8_VERSION="jdk-8u141-linux-x64.tar.gz"
 
 function check_root(){
   if [ $UID -ne 0 ];then
-    echo -e "\033[1;33you must be root to excute this scripts.\033[0m"
+    echo "you must be root to excute this scripts."
     exit 1
   fi
 }
@@ -26,7 +26,7 @@ function check_jdk(){
     echo -e "\033[1;31mIgnore Error about [ java command not found ]\033[0m"
 	echo -e "\033[1;33mThere is no java jdk installed.\033[0m"
   else
-    echo -e "\033[1;33There have installed java jdk,please check...\033[0m"
+    echo -e "\033[1;33mThere have installed java jdk,please check...\033[0m"
     exit 1
   fi
 }
@@ -34,9 +34,9 @@ function check_jdk(){
 function jdk8_down_install(){
   NETSTAT="ping -c 1 www.baidu.com >>/dev/null"
   if [ $? -ne 0 ];then
-    echo -e "\033[1;33network is error,please check...\033[0m"
+    echo "network is error,please check..."
   else
-    echo -e "\033[1;33network is ok,download ${JDK8_VERSION} now.please wait for a moment.\033[0m"
+    echo "network is ok,download ${JDK8_VERSION} now.please wait for a moment."
     cd /usr/java 
     wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u141-b15/336fa29ff2bb4ef291e347e091f7f4a7/jdk-8u141-linux-x64.tar.gz" 
     tar -zxf ${JDK8_VERSION} -C /usr/java && ln -s /usr/java/jdk1.8.0_141 /usr/jdk
@@ -48,3 +48,10 @@ echo 'export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar' >>/etc/
 source /etc/profile
 }
 
+function main(){
+  check_root
+  check_dir
+  check_jdk
+  jdk8_down_install
+}
+main

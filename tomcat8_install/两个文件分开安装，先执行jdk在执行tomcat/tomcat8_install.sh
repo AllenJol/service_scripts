@@ -1,23 +1,22 @@
 #!/bin/bash
 #__Author__:Allen_Jol at 2018-03-21 13:52:13
-#Description: tomcat 7 install
+#Description: tomcat 8 install
 
-. ./jdk8_install.sh
-check_root
-check_dir
-check_jdk
-jdk8_down_install
-
-source /etc/profile
+. /etc/profile
 
 DIR="/usr/local/src"
 TOMCAT8_PATH="/usr/local/tomcat8"
 TOMCAT8_VERSION="apache-tomcat-8.5.12"
 TOMCAT8_DOWN_URL="http://ozi3kq0eb.bkt.clouddn.com/${TOMCAT8_VERSION}.tar.gz"
 
+#apache8_version=8.5.12
+#jdk1_8_version=8u112
+#apache8_url=http://ozi3kq0eb.bkt.clouddn.com/apache-tomcat-$apache8_version.tar.gz
+#jdk1_8_url=http://ozi3kq0eb.bkt.clouddn.com/jdk-$jdk1_8_version-linux-x64.tar.gz
+
 function check_dir(){
   if [ -d "${TOMCAT8_PATH}" ];then
-    echo "tomcat dir have exsits,please check..."
+    echo -e "\033[1;31mtomcat dir have exsits,please check...\033[0m"
     exit 1
   else
     sleep 1
