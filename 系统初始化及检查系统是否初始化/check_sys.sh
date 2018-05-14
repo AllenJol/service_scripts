@@ -43,7 +43,7 @@ else
 fi
 
 #检查阿里云对时
-if [ `grep "ntp1.aliyun.com" /etc/crontab | wc -l` -eq 1 ];then
+if [ `grep "ntp1.aliyun.com" /etc/crontab | wc -l` -ne 0 ];then
   action "ntpdate is successfully." /bin/true
 else
   action "ntpdate is successfully." /bin/false
