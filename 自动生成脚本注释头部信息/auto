@@ -1,4 +1,6 @@
 #!/bin/bash
+#__Author__: Allen_Jol 2017-11-01
+#__Description__: 使用 auto xxx.sh 方式写一个脚本，自动生成头部信息
 
 #判断当文件不存在
 if [ ! "$1" ];then
@@ -14,5 +16,5 @@ fi
 touch "$1"
 echo "#!/bin/bash">>"$1"
 echo "#__Author__:Allen_Jol at `date +%F' '%H:%M:%S`">>"$1"
-echo "#Description:">>"$1"
+echo "#__Description__:">>"$1"
 vim "$1"
