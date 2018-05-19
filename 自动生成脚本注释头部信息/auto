@@ -15,6 +15,6 @@ fi
 
 touch "$1"
 echo "#!/bin/bash">>"$1"
-echo "#__Author__:Allen_Jol at `date +%F' '%H:%M:%S`">>"$1"
-echo "#__Description__:">>"$1"
+echo "#__Author__: Allen_Jol">>"$1"
+echo "#__Date__: `date +%F' '%H:%M:%S`">>"$1"
 vim "$1"
