@@ -1,7 +1,6 @@
 #!/bin/bash
 #__Author__:Allen_Jol at 2018-03-21 13:52:13
 #__Description__: 精简系统开机自启
-#__Blog__: http://blog.51cto.com/oldboy/1336488
 
 SERVICE=`which service`
 CHKCONFIG=`which chkconfig`
@@ -53,16 +52,16 @@ function Install_Require_Packages(){
 }
 
 #更改成中文字符集编码，非必要
-function Init_I18n(){
-  \cp /etc/sysconfig/i18n /etc/sysconfig/i18n.$DATE
+#function Init_I18n(){
+  #\cp /etc/sysconfig/i18n /etc/sysconfig/i18n.$DATE
   #sed -i 's#LANG="en_US.UTF-8"#LANG="zh_CN.UTF-8"#g' /etc/sysconfig/i18n
   #echo 'LANG="zh_CN.UTF-8"' >> /etc/sysconfig/i18n
-  sed -i '/LANG\=/s/^/#/' /etc/sysconfig/i18n
-  sed -i '1a LANG="zh_CN.UTF-8"' /etc/sysconfig/i18n
-  source /etc/sysconfig/i18n
-  action "Config encoding--->ok" /bin/true
-  echo ""
-}
+  #sed -i '/LANG\=/s/^/#/' /etc/sysconfig/i18n
+  #sed -i '1a LANG="zh_CN.UTF-8"' /etc/sysconfig/i18n
+  #source /etc/sysconfig/i18n
+  #action "Config encoding--->ok" /bin/true
+  #echo ""
+#}
 
 #关闭防火墙和selinux
 function Init_Iptables_selinux(){
@@ -124,11 +123,13 @@ function Init_Services(){
 
 function Ntp_Sys_Date(){
   echo "----------和阿里云时间服务器对时----------"
-  if [ `grep pool.ntp.org /var/spool/cron/root | grep -v grep | wc -l` -lt 1 ];then
+  if [ `grep "ntp1.aliyun.com" /etc/crontab | grep -v grep | wc -l` -lt 1 ];then
     echo "*/5 * * * * /usr/sbin/ntpdate ntp1.aliyun.com >>/dev/null 2>&1 &" >>/etc/crontab
+    echo "/usr/sbin/ntpdate ntp1.aliyun.com >>/dev/null" >>/etc/rc.d/rc.local
+    action "和阿里云时间服务器同步--->ok" /bin/true
+  else
+    action "和阿里云时间服务器同步--->flase" /bin/false
   fi
-  echo "00 00 * * * /usr/sbin/ntpdate ntp1.aliyun.com >>/dev/null" >>/etc/crontab
-  echo "/usr/sbin/ntpdate ntp1.aliyun.com >>/dev/null" >>/etc/rc.d/rc.local
   echo ""
 }
 
@@ -215,7 +216,7 @@ function clean_spool(){
 function main(){
   Config_Yum
   Install_Require_Packages
-  Init_I18n
+  #Init_I18n
   Init_Iptables_selinux
   Init_Services
   #Init_ssh
