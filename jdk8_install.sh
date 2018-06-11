@@ -15,7 +15,7 @@ function check_dir(){
 if [ ! -d "/usr/java" ];then
   mkdir -p /usr/java
 else
-  echo -e "\033[1;31java dir have exsits,and scripts has locked.\033[0m"
+  echo -e "\033[1;31mjava dir have exsits,and scripts has locked.\033[0m"
   exit 1
 fi
 }
