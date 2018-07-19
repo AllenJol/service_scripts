@@ -57,8 +57,7 @@ action "Config repos.d--->ok" /bin/true
 sleep 1
 echo -e "\e[1;31m重建缓存中，请稍等...\e[0m"
 #yum重新建立缓存
-yum clean all >>/dev/null
-yum makecache >>/dev/null
+yum clean all && yum makecache
 #同步时间
 yum -y install ntp >>/dev/null
 /usr/sbin/ntpdate ntp1.aliyun.com
