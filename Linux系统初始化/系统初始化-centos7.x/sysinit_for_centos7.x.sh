@@ -107,7 +107,7 @@ echo ""
 
 #内核参数优化
 cat >> /etc/sysctl.conf << EOF
-net.ipv4.ip_local_port_range = 1024 65536
+net.ipv4.ip_local_port_range = 32768 61000
 net.ipv4.tcp_fin_timeout = 1
 net.ipv4.tcp_keepalive_time = 1200
 net.ipv4.tcp_mem = 94500000 915000000 927000000
