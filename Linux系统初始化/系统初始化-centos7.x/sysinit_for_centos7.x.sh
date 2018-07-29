@@ -71,7 +71,7 @@ echo ""
 
 #安装常用软件
 echo -e "\e[1;31m安装常用软件包，请稍等...\e[0m"
-yum -y install vim lrzsz net-snmp nmap unzip net-tools tree \
+yum -y install vim lrzsz net-snmp nmap unzip net-tools tree psmisc\
     ncurses ncurses-devel gcc gcc-c++ openssl openssl-devel >>/dev/null
 yum -y install zlib zlib-devel openssh-clients man mtr traceroute bash-completion >>/dev/null
 action "Config yum--->ok" /bin/true
