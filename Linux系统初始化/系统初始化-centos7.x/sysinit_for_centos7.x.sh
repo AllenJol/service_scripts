@@ -90,8 +90,9 @@ sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
 setenforce 0
 systemctl disable firewalld.service 
 systemctl stop firewalld.service
-yum -y install iptables
-systemctl stop iptales
+yum -y install iptables-services iptables-devel
+systemctl stop iptables.service 
+systemctl disable iptables.service
 action "Disabled selinux and firewalld--->ok" /bin/true
 sleep 1
 echo ""
