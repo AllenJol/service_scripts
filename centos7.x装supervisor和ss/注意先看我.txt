@@ -1,0 +1,16 @@
+centos7.x自带python是2.7.5版本。因此可以选择不升级python到2.7.13版本。
+supervisor目前只支持2.x版本的python，不支持3.x版本
+
+我们在centos7.x上安装shadowsocks服务。我采用的方法是：
+
+1、升级python到2.7.x（一般我会升级到2.7.13）
+2、利用pip install supervisor或者下载supervisor源码包安装supervisor
+3、编写一个supervisor的启动ss即shadowsocks的配置文件放在/etc/supervisor/conf.d/目录下
+4、用supervisor启动，并且作为ss的守护进程
+
+如果是新购买的阿里云服务器，我会提前先做几个操作：
+1、yum clean all && yum makecache
+2、可能pip版本是8.0.x的，那么先升级
+pip install -U pip
+
+
